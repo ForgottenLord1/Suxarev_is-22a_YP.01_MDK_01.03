@@ -11,6 +11,7 @@ import com.example.myfirstapplication.data.model.SignUp
 import com.example.shopshoes_suxarev_is_22a.data.RetrofitInstance
 import kotlinx.coroutines.launch
 
+//Код регистрации нового пользователя Сухарев_ис-22а 15.12.25
 class RegisterAccountModel: ViewModel() {
     fun RegisterAccount(signUp: SignUp, context: Context, navController: NavController) {
         val sharedPreferences: SharedPreferences = context.getSharedPreferences(

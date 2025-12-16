@@ -26,6 +26,7 @@ import androidx.navigation.NavHostController
 import com.example.shopshoes_suxarev_is_22a.data.model.ForgotPass
 import com.example.shopshoes_suxarev_is_22a.ui.theme.viewmodel.ForgotPasswordModel
 
+//Скрин изменение пароля Сухарев_ис-22а 15.12.25
 @Composable
 fun ForgotPassword(modifier: Modifier = Modifier, viewModel: ForgotPasswordModel = ForgotPasswordModel(), navController: NavHostController){
     var email by remember { mutableStateOf("") }
@@ -62,7 +63,7 @@ fun ForgotPassword(modifier: Modifier = Modifier, viewModel: ForgotPasswordModel
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
-                contentColor = Color(0xFFFFFFFF),       // цвет текста
+                contentColor = Color(0xFFFFFFFF),
                 containerColor = Color(0xFF31B0C7)
             ),
             shape = RoundedCornerShape(10.dp)

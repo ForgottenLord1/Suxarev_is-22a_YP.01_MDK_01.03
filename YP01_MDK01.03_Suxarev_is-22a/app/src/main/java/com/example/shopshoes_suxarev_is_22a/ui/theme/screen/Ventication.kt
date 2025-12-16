@@ -6,9 +6,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
+//Скрин ОТР проверки  Сухарев_ис-22а 15.12.25
 @Composable
 fun Ventication(modifier: Modifier = Modifier, navController: NavHostController){
     var email by remember { mutableStateOf("") }
@@ -57,12 +55,12 @@ fun Ventication(modifier: Modifier = Modifier, navController: NavHostController)
             text = "ОТР Код",
         )
         Spacer(modifier = Modifier.height(40.dp))
-        OutlinedTextField(
-            value = email,
-            onValueChange = {email = it},
-            label = {Text("", color = Color(0xFF737377))},
-            modifier = Modifier.fillMaxWidth()
-        )
+        //OutlinedTextField(
+        //    value = email,
+        //    onValueChange = {email = it},
+        //    label = {Text("", color = Color(0xFF737377))},
+        //    modifier = Modifier.fillMaxWidth()
+        //)
         Spacer(modifier = Modifier.height(5.dp))
         Text(
             text = "00:30",

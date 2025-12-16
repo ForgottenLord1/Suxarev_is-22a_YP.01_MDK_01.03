@@ -1,6 +1,5 @@
 package com.example.shopshoes_suxarev_is_22a.ui.theme.screen
 
-import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -14,10 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -42,6 +39,7 @@ import com.example.myfirstapplication.data.model.SignUp
 import com.example.shopshoes_suxarev_is_22a.R
 import com.example.shopshoes_suxarev_is_22a.ui.theme.viewmodel.RegisterAccountModel
 
+//Скрин регистрации Сухарев_ис-22а 15.12.25
 @Composable
 fun RegisterAccount(modifier: Modifier = Modifier, viewModel: RegisterAccountModel = RegisterAccountModel(), navController: NavHostController){
     var email by remember { mutableStateOf("") }
@@ -101,20 +99,15 @@ fun RegisterAccount(modifier: Modifier = Modifier, viewModel: RegisterAccountMod
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             trailingIcon = {
-                // Выбираем иконку в зависимости от текущего состояния видимости
                 val image = if (isPasswordVisible)
-                    R.drawable.frame1// Иконка открытого глаза
+                    R.drawable.frame1
                 else
-                    R.drawable.frame1 // Иконка перечеркнутого глаза
+                    R.drawable.frame1
 
-                // Описание действия для людей с ограниченными возможностями
                 val description = if (isPasswordVisible) "Скрыть пароль" else "Показать пароль"
-
-                // Сама кнопка-иконка, которая переключает состояние isPasswordVisible
                 IconButton(onClick = {
                     isPasswordVisible = !isPasswordVisible
                 }) {
-                    //Icon(imageVector = image, contentDescription = description)
                 }
             }
         )
@@ -140,7 +133,7 @@ fun RegisterAccount(modifier: Modifier = Modifier, viewModel: RegisterAccountMod
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
-                contentColor = Color(0xFFFFFFFF),       // цвет текста
+                contentColor = Color(0xFFFFFFFF),
                 containerColor = Color(0xFF2D808D)
             ),
             shape = RoundedCornerShape(10.dp)

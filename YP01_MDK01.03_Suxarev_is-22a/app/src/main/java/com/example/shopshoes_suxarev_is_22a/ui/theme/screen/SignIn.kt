@@ -31,6 +31,7 @@ import com.example.myfirstapplication.data.model.SignIn
 import com.example.shopshoes_suxarev_is_22a.ui.theme.viewmodel.SingInModel
 
 
+//Скрин авторизации Сухарев_ис-22а 15.12.25
 @Composable
 fun SignIn(modifier: Modifier = Modifier, viewModel: SingInModel = SingInModel(), navController: NavHostController){
     var email by remember { mutableStateOf("") }
@@ -88,7 +89,7 @@ fun SignIn(modifier: Modifier = Modifier, viewModel: SingInModel = SingInModel()
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
-                contentColor = Color(0xFFFFFFFF),       // цвет текста
+                contentColor = Color(0xFFFFFFFF),
                 containerColor = Color(0xFF31B0C7)
             ),
             shape = RoundedCornerShape(10.dp)
