@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.shopshoes_suxarev_is_22a.ui.theme.ShopShoes_Suxarev_is22aTheme
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.CreateNewPassword
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.ForgotPassword
+import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.Home
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.Onboard
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.RegisterAccount
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.SignIn
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
             ShopShoes_Suxarev_is22aTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val navController = rememberNavController()
-                    NavHost(navController, startDestination = "onboard", modifier = Modifier.padding(innerPadding)) {
+                    NavHost(navController, startDestination = "home", modifier = Modifier.padding(innerPadding)) {
                         composable("onboard") {
                             Onboard(navController = navController)
                         }
@@ -48,6 +49,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("createnewpassword") {
                             CreateNewPassword(navController = navController)
+                        }
+                        composable("home") {
+                            Home(navController = navController)
                         }
                     }
                 }
