@@ -12,9 +12,9 @@ import kotlin.jvm.java
 
 object RetrofitInstance {
     const val SUPABASE_URL = "https://rycezphsndcufbguofvr.supabase.co/"
-    //private val proxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("10.207.106.77", 3128))
-    //var client: OkHttpClient = OkHttpClient.Builder().proxy(proxy).build()
-    private val client = OkHttpClient.Builder().build()
+    private val proxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("10.207.106.77", 3128))
+    var client: OkHttpClient = OkHttpClient.Builder().proxy(proxy).build()
+    //private val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(SUPABASE_URL)
