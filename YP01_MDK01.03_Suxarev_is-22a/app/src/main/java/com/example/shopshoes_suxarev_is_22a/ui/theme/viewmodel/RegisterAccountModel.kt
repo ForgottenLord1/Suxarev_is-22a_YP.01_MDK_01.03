@@ -21,6 +21,7 @@ class RegisterAccountModel: ViewModel() {
         try {
             viewModelScope.launch {
                 val response = RetrofitInstance.userMenegmentService.signUpfun(signUp)
+                val errorBody = response.errorBody()?.string()
                 Log.d("SignUpResponse", "Code: ${response.code()}, Message: ${response.message()}, Body: ${response.body()}")
                 if (response.isSuccessful) {
                     response.body()?.let {
@@ -32,7 +33,12 @@ class RegisterAccountModel: ViewModel() {
                     }
                 } else {
                     val messageText : String = response.message().toString()
-                    Toast.makeText(context, "Пользователь ввел некорректные данные \n $messageText", Toast.LENGTH_SHORT).show()
+                    if (errorBody == "{\"code\":429,\"error_code\":\"over_email_send_rate_limit\",\"msg\":\"email rate limit exceeded\"}"){
+                        Toast.makeText(context, "Достигнут лимит пользователей! \n $messageText", Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(context, "Пользователь ввел некорректные данные \n $messageText", Toast.LENGTH_SHORT).show()
+                    }
                     val errorBody = response.errorBody()?.string()
                     Log.e("SignUpError", "Error body: $errorBody")
                 }

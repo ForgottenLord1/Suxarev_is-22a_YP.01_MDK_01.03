@@ -2,7 +2,6 @@ package com.example.shopshoes_suxarev_is_22a.ui.theme.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,9 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -105,7 +101,7 @@ fun Home(modifier: Modifier = Modifier, navController: NavHostController){
             Image(
                 contentDescription = "",
                 painter = painterResource(R.drawable.homemenu),
-                modifier = Modifier.fillMaxHeight().fillMaxWidth().offset(y = 114.dp),
+                modifier = Modifier.fillMaxHeight().fillMaxWidth().offset(y = 114.dp).clickable(onClick = {navController.navigate("profile")})
             )
 
             //Image(

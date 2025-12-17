@@ -1,5 +1,8 @@
 package com.example.shopshoes_suxarev_is_22a.ui.theme.screen
 
+import android.app.Activity
+import android.app.AlertDialog
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,9 +12,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -23,11 +29,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.myfirstapplication.data.model.SignIn
+import com.example.shopshoes_suxarev_is_22a.R
 import com.example.shopshoes_suxarev_is_22a.ui.theme.viewmodel.SingInModel
 
 
@@ -36,7 +46,23 @@ import com.example.shopshoes_suxarev_is_22a.ui.theme.viewmodel.SingInModel
 fun SignIn(modifier: Modifier = Modifier, viewModel: SingInModel = SingInModel(), navController: NavHostController){
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var isPasswordVisible by remember { mutableStateOf(false) }
     val context = LocalContext.current
+    Image(
+        contentDescription = "",
+        modifier = Modifier.height(50.dp).width(50.dp).offset(x = 5.dp, y = 5.dp).clickable(onClick = {
+            AlertDialog.Builder(context)
+                .setTitle("Выход")
+                .setMessage("Выйти из приложения?")
+                .setPositiveButton("Да") { _, _ ->
+                    (context as Activity).finishAffinity()
+                }
+                .setNegativeButton("Нет", null)
+                .show()
+
+        }),
+        painter = painterResource(R.drawable.exit0)
+    )
     Column(
         modifier = Modifier.fillMaxSize().padding(horizontal = 7.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -73,7 +99,25 @@ fun SignIn(modifier: Modifier = Modifier, viewModel: SingInModel = SingInModel()
             value = password,
             onValueChange = {password = it},
             label = {Text("********", color = Color(0xFF737377))},
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            visualTransformation = if (isPasswordVisible)
+                VisualTransformation.None
+            else
+                PasswordVisualTransformation(),
+            trailingIcon = {
+                IconButton(onClick = {isPasswordVisible =!isPasswordVisible}) {
+                    Icon(
+                        painter = painterResource(
+                            id = if (isPasswordVisible)
+                                R.drawable.eye1
+                            else
+                                R.drawable.eye0
+                        ),
+                        contentDescription = "",
+                        modifier = Modifier.height(24.dp).width(24.dp)
+                    )
+                }
+            }
         )
         Spacer(modifier = Modifier.height(10.dp))
         Text(

@@ -1,11 +1,17 @@
 package com.example.shopshoes_suxarev_is_22a.ui.theme.screen
 
+import android.app.Activity
+import android.app.AlertDialog
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -20,9 +26,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.shopshoes_suxarev_is_22a.R
 import com.example.shopshoes_suxarev_is_22a.data.model.ForgotPass
 import com.example.shopshoes_suxarev_is_22a.ui.theme.viewmodel.ForgotPasswordModel
 
@@ -30,7 +38,16 @@ import com.example.shopshoes_suxarev_is_22a.ui.theme.viewmodel.ForgotPasswordMod
 @Composable
 fun ForgotPassword(modifier: Modifier = Modifier, viewModel: ForgotPasswordModel = ForgotPasswordModel(), navController: NavHostController){
     var email by remember { mutableStateOf("") }
+    var type = "email"
+    var token = "ab34647831b5e8a0fa898a782511bb9b036643f545c15353c54a1140"
     val context = LocalContext.current
+    Image(
+        contentDescription = "",
+        modifier = Modifier.height(50.dp).width(50.dp).offset(x = 5.dp, y = 5.dp).clickable(onClick = {
+            navController.navigate("signin")
+        }),
+        painter = painterResource(R.drawable.exit0)
+    )
     Column(
         modifier = Modifier.fillMaxSize().padding(horizontal = 7.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -59,7 +76,7 @@ fun ForgotPassword(modifier: Modifier = Modifier, viewModel: ForgotPasswordModel
         Spacer(modifier = Modifier.height(75.dp))
         Button(
             onClick = {
-                viewModel.ForgotPassword(ForgotPass(email), context, navController)
+                viewModel.ForgotPassword(ForgotPass(email,type,token), context, navController)
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(

@@ -17,6 +17,7 @@ import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.CreateNewPassword
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.ForgotPassword
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.Home
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.Onboard
+import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.Profile
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.RegisterAccount
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.SignIn
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.Ventication
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
             ShopShoes_Suxarev_is22aTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val navController = rememberNavController()
-                    NavHost(navController, startDestination = "home", modifier = Modifier.padding(innerPadding)) {
+                    NavHost(navController, startDestination = "onboard", modifier = Modifier.padding(innerPadding)) {
                         composable("onboard") {
                             Onboard(navController = navController)
                         }
@@ -52,6 +53,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("home") {
                             Home(navController = navController)
+                        }
+                        composable("profile") {
+                            Profile(navController = navController)
                         }
                     }
                 }

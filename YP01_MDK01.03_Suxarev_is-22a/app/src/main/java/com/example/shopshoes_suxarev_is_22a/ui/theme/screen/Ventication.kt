@@ -1,12 +1,14 @@
 package com.example.shopshoes_suxarev_is_22a.ui.theme.screen
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.OutlinedTextField
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,15 +19,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.shopshoes_suxarev_is_22a.R
 
 //Скрин ОТР проверки  Сухарев_ис-22а 15.12.25
 @Composable
 fun Ventication(modifier: Modifier = Modifier, navController: NavHostController){
     var email by remember { mutableStateOf("") }
     val context = LocalContext.current
+    Image(
+        contentDescription = "",
+        modifier = Modifier.height(50.dp).width(50.dp).offset(x = 5.dp, y = 5.dp).clickable(onClick = {
+            navController.navigate("signin")
+        }),
+        painter = painterResource(R.drawable.exit0)
+    )
     Column(
         modifier = Modifier.fillMaxSize().padding(horizontal = 7.dp),
         horizontalAlignment = Alignment.CenterHorizontally
