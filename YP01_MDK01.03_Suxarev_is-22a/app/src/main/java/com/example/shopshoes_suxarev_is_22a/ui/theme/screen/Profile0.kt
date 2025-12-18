@@ -37,12 +37,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.myfirstapplication.data.model.SignIn
 import com.example.shopshoes_suxarev_is_22a.R
 
-//Скрин Профиля Сухарев_ис-22а 16.12.25
 @Composable
-fun Profile(modifier: Modifier = Modifier, navController: NavHostController){
+fun Profile0(modifier: Modifier = Modifier, navController: NavHostController){
     var name by remember { mutableStateOf("") }
     var surname by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -86,7 +84,7 @@ fun Profile(modifier: Modifier = Modifier, navController: NavHostController){
             if (photoBitmap != null) {
                 Image(
                     modifier = Modifier.size(150.dp)
-                    .clip(RoundedCornerShape(100.dp)),
+                        .clip(RoundedCornerShape(100.dp)),
                     bitmap = photoBitmap!!.asImageBitmap(),
                     contentDescription = "Фото пациента"
                 )
@@ -106,10 +104,10 @@ fun Profile(modifier: Modifier = Modifier, navController: NavHostController){
             text = "Emmanuel Oyiboke",
             fontSize = 15.sp,
         )
-        Image(
-            painter = painterResource(R.drawable.profile0),
-            contentDescription = "",
-            modifier = Modifier.width(335.dp).height(65.dp).clickable(onClick = {})
+        Text(
+            text = "Изменить фото профиля",
+            fontSize = 15.sp,
+            color = Color.Blue
         )
         Text(
             text = "Имя",
@@ -155,10 +153,10 @@ fun Profile(modifier: Modifier = Modifier, navController: NavHostController){
             label = {Text("", color = Color(0xFF737377))},
             modifier = Modifier.fillMaxWidth()
         )
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(35.dp))
         Button(
             onClick = {
-                navController.navigate("profile0")
+                navController.navigate("profile")
             },
             modifier = Modifier.fillMaxWidth(),
             colors = ButtonDefaults.buttonColors(
@@ -168,7 +166,7 @@ fun Profile(modifier: Modifier = Modifier, navController: NavHostController){
             shape = RoundedCornerShape(10.dp)
         ) {
             Text(
-                text = "Изменить"
+                text = "Сохранить"
             )
         }
         Image(

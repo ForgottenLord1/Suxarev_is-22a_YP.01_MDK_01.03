@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShopShoes_Suxarev_is-22a</string>
+    <string name="registeraccount0">Регистрация</string>
+    <string name="registeraccount1">Заполните свои данные</string>
+    <string name="registeraccount2">Ваше имя</string>
+    <string name="registeraccount3">Email</string>
+    <string name="registeraccount4">Пароль</string>
+    <string name="registeraccount5">Даю согласие на обработку персональных данных</string>
+    <string name="registeraccount6">Зарегистрироваться</string>
+    <string name="registeraccount7">Есть аккаунт?</string>
+    <string name="registeraccount8">Войти</string>
+
+</resources>
