@@ -21,7 +21,15 @@ class SingInModel : ViewModel() {
                 Log.d("SignInResponse", "Code: ${response.code()}, Message: ${response.message()}, Body: ${response.body()}")
                 val errorBody = response.errorBody()?.string()
                 if (response.isSuccessful) {
-                    response.body()?.let {
+                    response.body()?.let { userData ->
+                        val prefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+                        prefs.edit().apply {
+                            putString("user_id", userData.id) // ID пользователя из ответа
+                            apply()
+                        }
+                        Log.d("SHARED_PREFS", "Сохранен user_id: ${userData.id}")
+                        val savedUserId = prefs.getString("user_id", "НЕТ_ID")
+                        Log.d("SHARED_PREFS", "Прочитан user_id: $savedUserId")
                         navController.navigate("home")
                     }
                     Log.e("SignInError", "Error body: $errorBody")
@@ -48,4 +56,12 @@ class SingInModel : ViewModel() {
     }
     //root1234@mail.ru
     //root1234
+}
+fun getUserId(context: Context): String? {
+    val prefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    return prefs.getString("user_id", null)
+}
+fun getProfileId(context: Context): String? {
+    val prefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+    return prefs.getString("profile_id", null)
 }

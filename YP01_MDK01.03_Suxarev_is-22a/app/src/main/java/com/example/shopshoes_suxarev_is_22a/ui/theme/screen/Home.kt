@@ -2,7 +2,9 @@ package com.example.shopshoes_suxarev_is_22a.ui.theme.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -12,6 +14,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +32,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.wear.compose.material.Scaffold
 import com.example.shopshoes_suxarev_is_22a.R
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Surface
 
 //Скрин Главное меню Сухарев_ис-22а 16.12.25
 @Composable
@@ -64,7 +71,19 @@ fun Home(modifier: Modifier = Modifier, navController: NavHostController){
                 modifier = Modifier.offset(x = -154.dp)
             )
             Spacer(modifier = Modifier.height(10.dp))
+            val categories = listOf(
+                "Все", "Outdoor", "Tennis"
+            )
 
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                contentPadding = PaddingValues(horizontal = 16.dp),
+                modifier = Modifier.fillMaxWidth().clickable(onClick = {navController.navigate("profile")})
+            ) {
+                items(categories) { category ->
+                    CategoryChip(text = category)
+                }
+            }
             Spacer(modifier = Modifier.height(40.dp))
             Row() {
                 Text(
@@ -111,5 +130,25 @@ fun Home(modifier: Modifier = Modifier, navController: NavHostController){
             //        .offset(y = -100.dp)
             //)
         }
+    }
+}
+@Composable
+fun CategoryChip(
+    text: String,
+    isSelected: Boolean = false,
+    onClick: (String) -> Unit = {}
+) {
+    Surface(
+        shape = RoundedCornerShape(20.dp),
+        color = if (isSelected) MaterialTheme.colorScheme.primaryContainer
+        else MaterialTheme.colorScheme.surfaceVariant,
+        modifier = Modifier.clickable { onClick(text) }
+    ) {
+        Text(
+            text = text,
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer
+            else MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }

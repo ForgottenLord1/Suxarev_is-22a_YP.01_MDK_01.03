@@ -7,8 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -22,6 +24,8 @@ import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.Profile0
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.RegisterAccount
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.SignIn
 import com.example.shopshoes_suxarev_is_22a.ui.theme.screen.Ventication
+import androidx.lifecycle.viewmodel.compose.viewModel  // ← ГЛАВНЫЙ ИМПОРТ
+import com.example.shopshoes_suxarev_is_22a.ui.theme.viewmodel.ProfileModel
 
 //Класс MainActivity с навигацией Сухарев_ис-22а 15.12.25
 class MainActivity : ComponentActivity() {
@@ -33,7 +37,7 @@ class MainActivity : ComponentActivity() {
             ShopShoes_Suxarev_is22aTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val navController = rememberNavController()
-                    NavHost(navController, startDestination = "profile", modifier = Modifier.padding(innerPadding)) {
+                    NavHost(navController, startDestination = "onboard", modifier = Modifier.padding(innerPadding)) {
                         composable("onboard") {
                             Onboard(navController = navController)
                         }

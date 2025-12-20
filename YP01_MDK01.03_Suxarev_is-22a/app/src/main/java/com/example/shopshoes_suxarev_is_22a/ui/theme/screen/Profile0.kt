@@ -86,7 +86,7 @@ fun Profile0(modifier: Modifier = Modifier, navController: NavHostController){
                     modifier = Modifier.size(150.dp)
                         .clip(RoundedCornerShape(100.dp)),
                     bitmap = photoBitmap!!.asImageBitmap(),
-                    contentDescription = "Фото пациента"
+                    contentDescription = ""
                 )
             } else {
                 Box(
@@ -101,7 +101,7 @@ fun Profile0(modifier: Modifier = Modifier, navController: NavHostController){
             }
         }
         Text(
-            text = "Emmanuel Oyiboke",
+            text = name + " " + surname,
             fontSize = 15.sp,
         )
         Text(
